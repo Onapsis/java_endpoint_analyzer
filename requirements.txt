@@ -1,0 +1,3 @@
+paramiko
+bs4
+requests

@@ -1,0 +1,6 @@
+SAP_HOST = ""
+SAP_INSTANCE = ""
+SAP_SID = ""
+SAP_SSH_PORT = ""
+SAP_SSH_USER = 22
+SAP_SSH_PASSWORD = ""# If not specified, SSH certs will be used. 
