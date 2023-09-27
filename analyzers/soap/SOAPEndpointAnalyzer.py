@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import os
-
-from bs4 import BeautifulSoup
+import warnings
+from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from analyzers.soap.SOAPData import SOAPData
+
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning, module='bs4')
 
 
 NON_AUTH = "None"

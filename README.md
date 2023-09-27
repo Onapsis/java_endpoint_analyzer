@@ -41,7 +41,7 @@ There are three main arguments to be used in this situation:
 * **-t**: Specifies which type of webapps are going to be downloaded/analyzed 
 * **-d**: Specifies the path to the directory where all extracted files will be stored.
 
-Due to extraction being activated, information and credentials of the targeted SAP system must be provided. This information is gathered from *system_config.py* file. You must create this file filling the necessary data. A template file called *system_config.py.template* can be found in the main directory of the repository. Feel free to make a copy of that file and start completing the necessary data. 
+Due to extraction being activated, information and credentials of the targeted SAP system must be provided. This information is gathered from *system_config.py* file. You must create this file inside the **lib** directory, filling the necessary data. A template file called *system_config.py.template* can be found inside the **lib** directory. Feel free to make a copy of that file and start completing the necessary data. 
 
 SAP's required information for extraction (*system_config.py*):
 * **SAP_HOST**: Destination. SAP server's host. 

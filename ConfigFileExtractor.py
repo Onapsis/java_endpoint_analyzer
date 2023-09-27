@@ -3,7 +3,7 @@ import os.path
 import random
 import string
 
-from paramiko import SSHClient
+from paramiko import SSHClient, AutoAddPolicy, ssh_exception
 from lib.constants import (SAP_APPS_DIR, CREATE_TEMP_DIR_CMD, SCRIPT_PATH, DIR_RESULTS,
                        SOAP_CONFIG_COMMAND_EXTRACT, SOAP_DIR_RESULTS, SOAP_ERROR1, SOAP_ERROR2,
                        WEBDYNPRO_CONFIG_COMMAND_EXTRACT, WEBDYNPRO_DIR_RESULTS, SERVLETS_WEBXML_COMMAND_EXTRACT,
@@ -34,22 +34,26 @@ class ConfigFileExtractor:
     def _connect(self):
         print(f"[+] Trying to connect to {self.host} with user {self.user}...",end="")
         self.client = SSHClient()
+        self.client.set_missing_host_key_policy(AutoAddPolicy())
         self.client.load_system_host_keys()
-        if self.password:
-            self.client.connect(self.host, 
+        
+        try:
+            if self.password:
+                self.client.connect(self.host, 
                             port=self.port,
                             username=self.user,
                             password=self.password,
                             allow_agent=False,
                             look_for_keys=False)
-        else:
-            self.client.connect(self.host,
+            else:
+                self.client.connect(self.host,
                                 port=self.port,
                                 username=self.user,
                                 password=self.password)
-
-        print("OK!")
-
+                
+        except ssh_exception.AuthenticationException:  
+            print(f"\n[-] SSH authentication failed. Review the SSH user/password combination is correct and retry.")
+            exit(1)
 
     def _copy_command_to_script(self, cmd):
         ftp = self.client.open_sftp()
