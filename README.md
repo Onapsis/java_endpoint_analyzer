@@ -62,11 +62,11 @@ Similar to the previous case, the following parameters should be used:
 
 
 ## Extract and analyze SOAP files using SSH Certs for connection.
-Retrieve endpoints from SOAP webapps from system saplab.test.com (DEV) instance 00. Having already a trust SSH connection
+Retrieve endpoints from SOAP webapps from system saplab.example.com (DEV) instance 00. Having already a trust SSH connection
 
 *system_config.py*
 ```python   
-SAP_HOST = "saplab.test.com"
+SAP_HOST = "saplab.example.com"
 SAP_INSTANCE = "00"
 SAP_SID = "DEV"
 SAP_SSH_PORT =  22
@@ -79,10 +79,10 @@ python jea.py --extract -t SOAP -d results
 ```
 
 ## Extract and analyze ALL files using SSH password for connection.
-Retrieve endpoints from ALL possible webapps from system saplab.test.com (DEV) instance 95 using "devadm:ILoveSAP1234." as credentials. 
+Retrieve endpoints from ALL possible webapps from system saplab.example.com (DEV) instance 95 using "devadm:ILoveSAP1234." as credentials. 
 *system_config.py*
 ```python   
-SAP_HOST = "saplab.test.com"
+SAP_HOST = "saplab.example.com"
 SAP_INSTANCE = "95"
 SAP_SID = "DEV"
 SAP_SSH_PORT =  22
@@ -95,9 +95,9 @@ python jea.py --extract -t ALL -d results
 ```
 
 ## Only analyze WEBDYNPROS files
-Retrieve endpoints from WEBDYNPROS webapps. Results of extraction from saplab.test.com were placed under directory "/tmp/jea_extraction". 
+Retrieve endpoints from WEBDYNPROS webapps. Results of extraction from saplab.example.com were placed under directory "/tmp/jea_extraction". 
 ```bash
-python jea.py -t WEBDYNPROS -d /tmp/jea_extraction/saplab.test.com
+python jea.py -t WEBDYNPROS -d /tmp/jea_extraction/saplab.example.com
 ```
 
 
